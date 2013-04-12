@@ -16,7 +16,12 @@ require 'active_record'
 require 'logger'
 
 require 'sinatra'
-require "sinatra/reloader" if development?
+require 'sinatra/namespace'
+
+if development?
+  require "sinatra/reloader" 
+  require "debugger"
+end
 
 require 'erb'
 
@@ -38,3 +43,7 @@ require APP_ROOT.join('config', 'database')
 require 'carrierwave/orm/activerecord'
 Dir[APP_ROOT.join('app', 'uploaders', '*.rb')].each { |file| require file }
 
+
+require 'sass/plugin/rack'
+Sass::Plugin.options[:style] = :compressed
+use Sass::Plugin::Rack

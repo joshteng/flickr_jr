@@ -1,0 +1,37 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="#">lovely</a>
+    <ul class="nav">
+      <li class="active"><a href="#">Home</a></li>
+      <% if login? %>
+      <li><a href="/">Upload a photo</a></li>
+        <li>
+          <form class="navbar-form pull-right" action="/sessions/logout" method="post">
+            <input name="_method" type="hidden" value="delete" />
+            <button class="btn" type="submit">Logout of <%= current_user.username %></button>
+          </form>
+        </li>
+      <% else %>
+        <li><a href='/users/new'>Sign up</a></li>
+      <% end %>
+    </ul>
+
+    <% unless login? %>
+      <form class="navbar-form pull-right" action="/sessions/login" method="post">
+        <div class="input-append">
+          <input class="span3" type="text" name="email" placeholder="Enter your email">
+          <button class="btn" type="submit">Login</button>
+        </div>
+      </form>
+    <% end %>
+
+
+  </div>
+</div>
+
+<% if @errors %>
+<div class="alert">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Warning!</strong> <%= @errors %>
+</div>
+<% end %>
