@@ -1,10 +1,10 @@
 <div class="navbar">
   <div class="navbar-inner">
-    <a class="brand" href="#">lovely</a>
+    <a class="brand" href="/">lovely</a>
     <ul class="nav">
-      <li class="active"><a href="#">Home</a></li>
+      <li class="active"><a href="/">Home</a></li>
       <% if login? %>
-      <li><a href="/">Upload a photo</a></li>
+      <li><a href="/photos/new">Upload a photo</a></li>
         <li>
           <form class="navbar-form pull-right" action="/sessions/logout" method="post">
             <input name="_method" type="hidden" value="delete" />

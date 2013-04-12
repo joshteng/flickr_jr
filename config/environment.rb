@@ -26,6 +26,7 @@ end
 require 'erb'
 
 require 'carrierwave'
+require 'mini_magick'
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
@@ -43,6 +44,10 @@ require APP_ROOT.join('config', 'database')
 require 'carrierwave/orm/activerecord'
 Dir[APP_ROOT.join('app', 'uploaders', '*.rb')].each { |file| require file }
 
+CarrierWave.configure do |config|
+  config.root = "#{APP_ROOT}/public"
+  config.store_dir = "#{config.root}/uploads"
+end
 
 require 'sass/plugin/rack'
 Sass::Plugin.options[:style] = :compressed

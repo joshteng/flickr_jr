@@ -17,6 +17,8 @@ gem 'rake'
 
 gem 'shotgun'
 gem 'carrierwave'
+gem 'mini_magick'
+
 gem 'sass'
 
 group :development do

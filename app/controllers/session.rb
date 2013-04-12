@@ -1,8 +1,6 @@
 namespace '/sessions' do
   post '/login/?' do
-
     user = User.find_by_email(params[:email])
-    debugger
     login(user)
   end
 
